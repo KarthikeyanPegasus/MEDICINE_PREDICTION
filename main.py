@@ -31,10 +31,9 @@ def predict():
     dosepredict = dosemodel.predict(prediction)
 
     dosage = dosepredict[0]
-    response = {
+    clmname = ["morning","afternoon","night","totalmedicin1","totalmedicine2","avoid","take"]
 
-        'medicine_prediction': list(dosage)
-    }
+    response = {clmname[i]: dosage[i] for i in range(len(clmname))}
 
 
     return jsonify(response)
